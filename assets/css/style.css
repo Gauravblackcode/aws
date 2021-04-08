@@ -1,0 +1,92 @@
+.cover-bg {
+  background-image: url(../img/bg-1.png);
+  background-repeat: no-repeat;
+  /* background-position: right; */
+}
+.nav-btns {
+  margin: auto;
+  /* padding: 6rem 3rem 6rem 3em; */
+  /* height: 100vh; */
+}
+.card-custom {
+    padding: 4rem;
+    align-items: left;
+    margin: 4rem 22rem 4rem 3rem;
+    left: 0;
+    text-align: center;
+    border-radius: 10px;
+    font-size: xx-large;
+    border-color: #91352a;
+    transition: 1.0s ease all;
+    -moz-transition: 1.0s ease all;
+    -webkit-transition: 1.0s ease all;
+    background-color: #91352a42;
+    color: black;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.card-custom:hover {
+  transition: 2.0s;
+  transform: rotateX(360deg);
+  -moz-transform: rotateX(360deg);
+  -webkit-transform: rotateX(360deg);
+  transform-origin: center;
+  -moz-transform-origin: center;
+  -webkit-transform-origin: center;
+  background-color: #17a2b8a6;
+  color: #91352a;
+  text-decoration: none;
+  transition: transform 1s ease all;
+  -moz-transition: -moz-transform 1s ease all;
+  -webkit-transition: -webkit-transform 1s ease all;
+}
+a:hover{
+  text-decoration: none;
+}
+/* .card-custom span {
+  position: absolute;
+} */
+
+/* list page */
+
+.list-cover{
+    background-image: url(../img/list-bg.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: cover;
+    height: 100vh;
+}
+
+.form-box{
+    padding: 0rem 5rem 5rem 5rem;
+    margin: 2rem 5rem 5rem 1rem;
+    text-align: center;
+    background: aliceblue;
+    border-radius: 25px;
+}
+
+/* create buckets  */
+.create-bg{
+    background-image: url(../img/create-bg.jpg);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: cover;
+}
+.create-form{
+    padding: 3rem;
+    border-radius: 25px;
+    margin: 4rem;
+    background-color: white;
+    
+}
+
+/* drag and drop start */
+#dropzone {
+  border: 3px dashed #17a2b8;
+  border-radius: 20px;
+  width: 100%;
+  padding: 80px;
+  box-shadow: inset 1px 1px 20px;
+}
+/* drag and drop end */

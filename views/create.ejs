@@ -1,0 +1,59 @@
+<%- include("base/header.ejs") %>
+
+    <body>
+        <%- include("base/navbar.ejs") %>
+
+            <div class="row create-bg">
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 ">
+                    <div class="create-form">
+
+                        <form action="/create" method="post">
+                            <!-- alet start -->
+                            <% if (err) { %>
+                                <div class="alert alert-danger alert-dismissible fade show text-center " role="alert">
+                                    <%= err.code %> !!
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                </div>
+                                <% } %>
+                            <!-- alet end -->
+                                    <p class="text-center text-secondary"> We never Store/Share your data!</p>
+                                    <div class="form-group">
+                                        <label for="bucektName">Bucket Name</label>
+                                        <input type="text" required class="form-control" name="name" id="bucektName"
+                                            aria-describedby="bucektName">
+                                        <!-- <small id="bucektNamehelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="region">Region</label>
+                                        <input type="text" required class="form-control" id="region" name="region"
+                                            value="ap-south-1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="accesskey">Access Key</label>
+                                        <input type="text" required class="form-control" id="accesskey"
+                                            aria-describedby="accesskey" name="access_key" value="AKIA3IKS3ZJHUC5ZLUPJ">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="secretkey">Secret Key</label>
+                                        <input type="text" required class="form-control" id="secretkey"
+                                            aria-describedby="secretkey" name="secret_key"
+                                            value="KPnKqYkv4CvPlOFf3dGx+CrGPyRTvTeCJgC8oGHV">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-11 m-auto text-center">
+                                            <button type="submit" class="btn btn-outline-primary text-center ">Create a
+                                                new Bucket</button>
+                                        </div>
+                                    </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <%- include("base/footer.ejs") %>
+
+
+    </body>

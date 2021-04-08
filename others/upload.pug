@@ -1,0 +1,13 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Document
+h1 this is #{title}  
+form(action='/upload' method='post')
+  input(type='text' class='form-control' placeholder='Please enter bucket name' name='name' )
+  input(type='text' class='form-control' placeholder='Please enter region' name='region' value='ap-south-1' )
+  input(type='text' class='form-control' placeholder='Please enter Access Key' name='access_key' value='AKIA3IKS3ZJHUC5ZLUPJ')
+  input(type='text' class='form-control' placeholder='Please enter Secret Key' name='secret_key' value='KPnKqYkv4CvPlOFf3dGx+CrGPyRTvTeCJgC8oGHV' )
+  button(type='submit') Add

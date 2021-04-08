@@ -1,0 +1,155 @@
+<%- include("base/header.ejs") %>
+    <script>
+        var dropzone = document.getElementById('dropzone');
+        // dropzone.ondrop = function (e) {
+        //     var length = e.dataTransfer.items.length;
+        //     for (var i = 0; i < length; i++) {
+        //         var entry = e.dataTransfer.items[i].webkitGetAsEntry();
+        //         if (entry.isFile) {
+        //          console.log(entry, "file");
+        //           // do whatever you want
+        //         } else if (entry.isDirectory) {
+        //          // do whatever you want
+        //          console.log(entry);
+        //         }
+        //     }
+        // };
+        dropzone.addEventListener(
+            "drop",
+            function (event) {
+                alert("ghjgj alert")
+                var items = event.dataTransfer.items;
+
+                event.preventDefault();
+                listing.innerHTML = "";
+
+                for (var i = 0; i < items.length; i++) {
+                    var item = items[i].webkitGetAsEntry();
+
+                    if (item) {
+                        console.log(item, "");
+                        // scanAndLogFiles(item, listing);
+                    }
+                }
+            },
+            false
+        );
+    </script>
+
+    <body>
+        <%- include("base/navbar.ejs") %>
+            <div class="row list-cover">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-6 mr-auto p-5">
+                            <div class="form-box">
+                                <!-- -->
+                                <% if(!bucket) { %>
+
+                                    <!-- get the list of bucket by getting all the access key and secret key -->
+                                    <form action="/list" method="post" class="p-1">
+                                        <!-- alet start -->
+                                        <% if (typeof err=='object' && err ) { %>
+                                            <div class="alert alert-danger alert-dismissible fade show text-center pt-3"
+                                                role="alert">
+                                                <%= err.code %> !!
+                                                    <button type="button" class="close" data-dismiss="alert"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                            </div>
+                                            <% } %>
+                                                <!-- alet end -->
+                                                <p class="text-center"> We never Store/Share your data!</p>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" required id="region"
+                                                        name="region" placeholder="Enter Region" value="ap-south-1">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" required id="accesskey"
+                                                        aria-describedby="accesskey" name="access_key"
+                                                        placeholder="Enter Access Key" value="AKIA3IKS3ZJHUC5ZLUPJ">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" required id="secretkey"
+                                                        aria-describedby="secretkey" name="secret_key"
+                                                        placeholder="Enter Secret Key"
+                                                        value="KPnKqYkv4CvPlOFf3dGx+CrGPyRTvTeCJgC8oGHV">
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-11 m-auto text-center">
+                                                        <button type="submit"
+                                                            class="btn btn-outline-primary text-center">Get
+                                                            Bucket Lists</button>
+                                                    </div>
+                                                </div>
+                                    </form>
+
+                                    <!-- get the list of bucket by getting all the access key and secret key -->
+
+                                    <% } else if (bucket && data && data.length> 0 ) { %>
+                                        <h2 class="text-muted "> Your Bucket List</h2>
+                                        <form action="/upload" method="post" enctype="multipart/form-data">
+                                            <div class="input-group mb-3 mt-3">
+                                                <div class="input-group-prepend">
+                                                    <label class="input-group-text"
+                                                        for="inputGroupSelect01">Buckets</label>
+                                                </div>
+                                                <select class="custom-select" required name="bucket_name"
+                                                    id="inputGroupSelect01">
+                                                    <option value="">Select Your Bucket</option>
+                                                    <% for (let item of data) { %>
+                                                        <option value="<%=item.Name%>" name="<%=item.Name%>">
+                                                            <%= item.Name %>
+                                                        </option>
+                                                        <% } %>
+                                                </select>
+                                            </div>
+                                            <!-- hidden inputs start -->
+                                            <input type="hidden" name="region" value="<%= aKeys.region %>">
+                                            <input type="hidden" name="access_key" value="<%= aKeys.access_key %> ">
+                                            <input type="hidden" name="secret_Key" value="<%= aKeys.secret_key %>">
+                                            <!-- hidden inputs end-->
+                                            <input id="dropzone" type="file" required name="file" webkitdirectory multiple class="mb-3">
+                                                <p>Drop your folder here!</p>
+                                            </input>
+                                            
+                                            <!-- <input type="file" required name="file"  webkitdirectory multiple  class="form-control mb-3"> -->
+                                            <!-- <input type="file" required name="file" class="form-control mb-3">
+                                            <input type="file" required name="file" class="form-control mb-3"> -->
+                                            <button type="submit"
+                                                class="btn btn-outline-primary pr-5 pl-5">Upload</button>
+                            </div>
+                            </form>
+                            <% } else { %>
+                                <h2>No buckets found</h2>
+                                <button type="submit" class="btn btn-primary btn-lg">Create New
+                                    Bucket</button>
+                                <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <%- include("base/footer.ejs") %>
+                <!-- script tags start-->
+                <% if (typeof url=='string' && url) { %>
+                    <script>
+                        var url = "<%= url %>";
+                        var title = "<%= title %>";
+
+                        Swal.fire(
+                            {
+                                title: title,
+                                inputLabel: 'Please copy your website url!!',
+                                input: 'url',
+                                inputValue: url,
+                            }
+                        )
+                    </script>
+                    <% } %>
+
+
+
+    </body>

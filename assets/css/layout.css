@@ -1,0 +1,16 @@
+.nav-custom-item a {
+  font-size: 30px;
+  color: gray !important;
+}
+.nav-custom-item a {
+  margin: 0 15px 0 15px;
+  transition: 1s;
+}
+.navbar-custom {
+  box-shadow: 1px 2px 20px 0px grey;
+}
+.nav-custom-item a:hover {
+  transform: translate(10px, 10px);
+  transition: 1s;
+  color: rgb(169, 64, 64) !important;
+}
