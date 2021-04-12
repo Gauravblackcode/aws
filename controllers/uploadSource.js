@@ -7,9 +7,7 @@ exports.UploadCode = function (req, res, next) {
     // secretAccessKey: body.secret_key,
     // "region": body.region,
 
-    // accessKeyId: "AKIA3IKS3ZJHUC5ZLUPJ",
-    // secretAccessKey: "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",
-    // region: "ap-south-1",
+  
   });
 
   // const mimetype = req.file.mimetype;
